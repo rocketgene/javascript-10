@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+
 export default class Data {
 
   // Generic function to construct fetch request
@@ -25,6 +26,7 @@ export default class Data {
     if (skipHash) {
         options.headers['Authorization'] = credentials.slice(1, credentials.length - 1);
     }
+
     return fetch(url, options);
   }
 
@@ -40,8 +42,9 @@ export default class Data {
     }
     else if (response.status === 401) {
       return null;
+    } else {
+      throw new Error('server error')
     }
-    
   }
   
   async createUser(user) {
@@ -53,6 +56,8 @@ export default class Data {
       return response.json().then(data => {
         return data.errors;
       });
+    } else {
+      throw new Error('server error')
     }
     
   }
@@ -64,6 +69,8 @@ export default class Data {
     }
     else if (response.status === 401) {
       return null;
+    } else {
+      throw new Error('server error')
     }
     
   }
@@ -75,6 +82,8 @@ export default class Data {
     }
     else if (response.status === 401) {
       return null;
+    } else {
+      throw new Error('server error')
     }
     
   }
@@ -86,6 +95,8 @@ export default class Data {
     }
     else if (response.status === 401) {
       return null;
+    } else {
+      throw new Error('server error')
     }
     
   }
@@ -99,6 +110,8 @@ export default class Data {
       return response.json().then(data => {
         return data.errors;
       });
+    } else {
+      throw new Error('server error')
     }
     
   }
@@ -112,6 +125,8 @@ export default class Data {
       return response.json().then(data => {
         return data.errors;
       });
+    } else {
+      throw new Error('server error')
     }
     
   }

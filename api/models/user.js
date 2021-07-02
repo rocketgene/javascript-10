@@ -47,22 +47,37 @@ module.exports = (sequelize) => {
         }
       }
     },
+    confirmedPassword: {
+      type: Sequelize.VIRTUAL,  
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'A confirmed assword is required'
+        },
+        notEmpty: {
+          msg: 'Please provide a confirmed password'
+        },
+      }
+    },
     password: {
       type: Sequelize.STRING,
       allowNull: false,
       set(val) {
-        const hashedPassword = bcrypt.hashSync(val, 10);
-        this.setDataValue('password', hashedPassword);
+        if ( val === this.confirmedPassword ) {
+          const hashedPassword = bcrypt.hashSync(val, 10);
+          this.setDataValue('password', hashedPassword);
+        }
       },
       validate: {
         notNull: {
-          msg: 'password is null. Please enter password'
+          msg: 'Both passwords must match'
         },
         notEmpty: {
-          msg: 'password is empty. Please enter password'
-        }
+          msg: 'Please provide a password'
+        },
       }
-    },
+    }
+    
   }, { sequelize });
 
   User.associate = (models) => {

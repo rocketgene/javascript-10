@@ -3,19 +3,19 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //import components
-import Header from './components/header';
-import Courses from './components/courses';
-import CreateCourse from './components/create-course';
-import UpdateCourse from './components/update-course';
-import CourseDetail from './components/course-detail';
-import UserSignIn from './components/user-sign-in';
-import UserSignUp from './components/user-sign-up';
-import UserSignOut from './components/user-sign-out';
-import NotFound from './components/not-found';
+import Header from './components/Header';
+import Courses from './components/Courses';
+import CreateCourse from './components/CreateCourse';
+import UpdateCourse from './components/UpdateCourse';
+import CourseDetail from './components/CourseDetail';
+import UserSignIn from './components/UserSignIn';
+import UserSignUp from './components/UserSignUp';
+import UserSignOut from './components/UserSignOut';
+import NotFound from './components/NotFound';
 import {withContext} from './Context';
 import PrivateRoute from './PrivateRoute';
-import Forbidden from './components/forbidden';
-import UnhandledError from './components/error';
+import Forbidden from './components/Forbidden';
+import UnhandledError from './components/UnhandledError';
 
 const HeaderWithContext = withContext(Header);
 const CoursesWithContext = withContext(Courses);
@@ -40,6 +40,7 @@ export default function App() {
           <Route path="/signout" component={UserSignOut} />
           <Route path="/error" component={UnhandledError} />
           <Route path="/forbidden" component={Forbidden} />
+          <Route path="/notfound" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
     </Router>
