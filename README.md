@@ -5,7 +5,10 @@
 cd api
 npm install
 npm start
-cd ../client
+```
+In a new window:
+```
+cd client
 npm install
 npm start
 ```
